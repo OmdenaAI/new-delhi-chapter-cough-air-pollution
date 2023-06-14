@@ -15,4 +15,5 @@ Note : Please Follow the below guidelines to create task folders
 |2|         |         |
 |3|         |         |
 |4|Model Development|Simple models like Xgboost, ANN created on Coughvid dataset for demonstration|
+|4|Model Development|Pycaret used to train multiple ML Models on Cleaned CoughVid Dataset|
 |5|Political Rationale| The entire basis of the political rationale is to create a document upon which we could use as a basis to know if the direction of our current application is viable or not|
