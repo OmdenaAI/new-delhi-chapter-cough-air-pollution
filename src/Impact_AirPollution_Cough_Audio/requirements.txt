@@ -1,0 +1,5 @@
+streamlit
+streamlit-audiorecorder
+streamlit_extras
+librosa
+tensorflow
