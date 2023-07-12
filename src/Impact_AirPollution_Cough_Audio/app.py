@@ -1,7 +1,7 @@
 import streamlit as st
 from streamlit_extras.switch_page_button import switch_page
-from menu import load_menu_html,load_css
-from front_page import load_home_page_content
+from project_utils.menu import load_menu_html,load_css
+from project_utils.front_page import load_home_page_content
 
 PAGE_TITLE="Identifying the Severity of Cough Due to Air Pollution in New Delhi using Audio Analysis and Machine Learning"
 
@@ -13,4 +13,5 @@ load_home_page_content()
 st.markdown("# Diagonose the test",unsafe_allow_html=True)
 btn=st.button("Click to Diagnose!")
 if btn:
-    switch_page("Detect_Cough")
+    switch_page("Cough_Diagonsis")   
+
