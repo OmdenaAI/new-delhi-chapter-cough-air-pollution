@@ -1,5 +1,6 @@
+joblib
+lightgbm
 streamlit
 streamlit-audiorecorder
 streamlit_extras
-librosa
-tensorflow
+librosa==0.10.*
