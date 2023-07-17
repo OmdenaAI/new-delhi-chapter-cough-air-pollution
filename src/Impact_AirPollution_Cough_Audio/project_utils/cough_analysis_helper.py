@@ -1,6 +1,6 @@
 import numpy as np
 import pandas as pd
-import os, librosa, lightgbm, joblib, pickle
+import os, librosa, lightgbm, joblib #, pickle
 
 def chroma_scaled_features(audio_sr, audio_file):
     stft = np.abs(librosa.stft(audio_file))
