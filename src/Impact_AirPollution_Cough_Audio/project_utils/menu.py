@@ -22,7 +22,7 @@ def load_css():
   h2 {
     font-size: 24px;
     text-transform: uppercase;
-    color: #303030;
+    color: white;
     font-weight: 600;
     margin-bottom: 30px;
   }
@@ -33,6 +33,12 @@ def load_css():
     font-weight: 400;
     margin-bottom: 30px;
   }  
+  p {
+    font-size: medium;
+  }
+  th{
+    text-align: center;
+  }
   .jumbotron {
     background-color: #f4511e;
     color: #fff;
@@ -131,9 +137,11 @@ def load_css():
     letter-spacing: 4px;
     border-radius: 0;
     font-family: Montserrat, sans-serif;
+    font-weight: 600;
   }
   .navbar li a, .navbar .navbar-brand {
     color: #fff !important;
+    font-size:medium;
   }
   .navbar-nav li a:hover, .navbar-nav li.active a {
     color: #f4511e !important;
@@ -214,7 +222,7 @@ def load_menu_html(is_app_page):
       <a class="navbar-brand" href="#myPage">Logo</a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
-      <ul class="nav navbar-nav navbar-right">
+      <ul class="nav navbar-nav navbar-right font-weight-bold">
         <li><a href="#project">Project</a></li>
         <li><a href="#team">About Team</a></li>
         <li><a href="#datasource">Data Source</a></li>
