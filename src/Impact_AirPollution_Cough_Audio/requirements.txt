@@ -4,3 +4,4 @@ streamlit
 streamlit-audiorecorder
 streamlit_extras
 librosa==0.10.*
+scikit-learn==1.2.2
