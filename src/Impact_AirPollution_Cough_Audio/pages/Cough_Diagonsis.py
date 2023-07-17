@@ -15,8 +15,10 @@ DETECT_COUGH_MODEL_PATH = './Model/cough_detection_model.pkl'
 COUGH_SEVERITY_MODEL_PATH = './Model/respiratory_db_lightgbm_model.joblib'
 TEMPORARY_FILE_NAME='cough_audio.wav'
 
-COUGH_TYPE = {0: 'Wind', 1: 'Breathing', 2: 'Coughing', 3: 'Snoring', 4: 'Sneezing'}
-SEVERITY_TYPE = ['healthy', 'mild', 'moderate', 'severe']
+COUGH_TYPE = {0: 'Breathing', 1: 'Coughing', 2: 'Sneezing', 3: 'Snoring', 4: 'Wind'}
+#COUGH_TYPE = {0: 'Wind', 1: 'Breathing', 2: 'Coughing', 3: 'Snoring', 4: 'Sneezing'}
+#SEVERITY_TYPE = ['healthy', 'mild', 'moderate', 'severe']
+
 
 if 'toggleswitchkey' not in st.session_state:
   st.session_state.toggleswitchkey = ''
@@ -33,11 +35,11 @@ def model_load(detect_cough_model_path, cough_severity_model_path):
 def detect_cough(model, mfcc, mels, zcr, sc, sr):
     prediction_result = detect_cough_from_model(model, mfcc, mels, zcr, sc, sr)
     #st.write(list(prediction_result))
-    return prediction_result[0]
+    return prediction_result
 
 def detect_cough_severity(model, mfcc, mels, zcr, sc, sr, audio_sr, audio_file):
     prediction_result = detect_cough_severity_from_model(model, mfcc, mels, zcr, sc, sr, audio_sr, audio_file)
-    return prediction_result[0]
+    return prediction_result
 
 #def toggle_switch_ui():
 #   #st.write("## Toggle Switch")
@@ -90,7 +92,7 @@ def save_to_temp_file(uploaded_audio_file):
     st.session_state.audio_sr = sr
     st.session_state.audio_file = wave    
 
-if __name__ == '__main__':
+def main(): 
    detect_cough_model, cough_severity_model = model_load(os.path.abspath(DETECT_COUGH_MODEL_PATH), os.path.abspath(COUGH_SEVERITY_MODEL_PATH))
    #st.help(detect_cough_model)
    #st.write(cough_severity_model)
@@ -124,8 +126,8 @@ if __name__ == '__main__':
         os.remove(f)
 
       save_to_temp_file(uploaded_file)
-      st.write(st.session_state.audio_sr)
-      st.write(st.session_state.audio_file)
+      #st.write(st.session_state.audio_sr)
+      #st.write(st.session_state.audio_file)
 
    btn=st.button("Diagnose")
    if btn:
@@ -133,15 +135,22 @@ if __name__ == '__main__':
     cough_type_index = detect_cough(detect_cough_model, mfcc, mels, zcr, sc, sr)
     if COUGH_TYPE[cough_type_index]=='Coughing':
       severity_type_index=detect_cough_severity(cough_severity_model, mfcc, mels, zcr, sc, sr, st.session_state.audio_sr, st.session_state.audio_file)
-      st.success(f"The Audio sample is {SEVERITY_TYPE[severity_type_index]}", icon="✅")
-      #if label_class_index==LABEL_CLASS_NAMES[1]:
-      #  st.success(f"The Audio sample is {LABEL_CLASS_NAMES[label_class_index]} with confidence level {confidence_percentage}%", icon="✅")
-      #elif label_class_index==LABEL_CLASS_NAMES[2]:
-      #  st.warning(f"The Audio sample is {LABEL_CLASS_NAMES[label_class_index]} with confidence level {confidence_percentage}%", icon="⚠️")
-      #elif label_class_index==LABEL_CLASS_NAMES[3]:
-      #  st.error(f"The Audio sample is {LABEL_CLASS_NAMES[label_class_index]} with confidence level {confidence_percentage}%", icon="🚨")
+      st.write(severity_type_index)
+      #st.success(f"The severity level of cough present in the audio sample is {severity_type_index.capitalize()}.", icon="✅")
+      if severity_type_index=="healthy":
+        st.success(f"The severity level of cough present in the audio sample is {severity_type_index.capitalize()}.", icon="✅")
+      if severity_type_index=="mild":
+        st.info(f"The severity level of cough present in the audio sample is {severity_type_index.capitalize()}.", icon="ℹ️")
+      if severity_type_index=="moderate":
+        st.warning(f"The severity level of cough present in the audio sample is {severity_type_index.capitalize()}.", icon="⚠️")
+      if severity_type_index=="severe":
+        st.error(f"The severity level of cough present in the audio sample is {severity_type_index.capitalize()}.", icon="🚨")
       #else:
       # st.info("Please try again.", icon="ℹ️")
       #The Audio sample is Healthy with confidence level 71.58%
     else:
       st.info("Cough was not detected in the uploaded audio file. Please try again with a valid audio file.", icon="ℹ️")
+
+if __name__ == '__main__':
+   main()  
+
