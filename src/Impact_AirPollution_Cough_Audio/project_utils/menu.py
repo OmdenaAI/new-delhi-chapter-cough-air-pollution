@@ -1,4 +1,6 @@
 import streamlit as st
+from streamlit_extras.switch_page_button import switch_page
+
 def load_css():
     return st.markdown("""
  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -14,14 +16,15 @@ def load_css():
     [data-testid="collapsedControl"]{
    display: none;
    }   
+  footer {visibility: hidden;}                     
   body {
     font: 400 15px Lato, sans-serif;
     line-height: 1.8;
     color: #818181;
   }
   h2 {
-    font-size: 24px;
     text-transform: uppercase;
+    text-align: center;
     color: white;
     font-weight: 600;
     margin-bottom: 30px;
@@ -38,7 +41,7 @@ def load_css():
     text-align: center;
   }
   .jumbotron {
-    background-color: #f4511e;
+    background-color: mediumslateblue;
     color: #fff;
     padding: 100px 25px;
     font-family: Montserrat, sans-serif;
@@ -57,7 +60,7 @@ def load_css():
     margin: 70px 0;
   }
   .navbar {
-    background-color: #f4511e;
+    background-color: black;
     z-index: 9999;
     border: 0;
     font-size: 12px !important;
@@ -71,7 +74,7 @@ def load_css():
     font-size:medium;
   }
   .navbar-nav li a:hover, .navbar-nav li.active a {
-    color: #f4511e !important;
+    color: mediumslateblue !important;
     background-color: #fff !important;
   }
   .navbar-default .navbar-toggle {
@@ -122,12 +125,7 @@ def load_css():
 
 def load_menu_html(is_app_page):
     if is_app_page:
-        st.markdown(f"""   <base href=".."/>
-    <link rel="redirect" id="project" href="#project"/>
-    <link rel="redirect" id="team" href="#team"/>
-    <link rel="redirect" id="datasource" href="#datasource"/>
-    <link rel="redirect" id="coughdiagnosis" href="#coughdiagnosis"/>
-    <nav class="navbar navbar-default navbar-fixed-top">
+        st.markdown(f"""   <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -135,7 +133,6 @@ def load_menu_html(is_app_page):
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>                        
       </button>
-      <a class="navbar-brand" href="#myPage">Logo</a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right font-weight-bold">
@@ -153,29 +150,11 @@ def load_menu_html(is_app_page):
 """
 ,unsafe_allow_html=True)
     else:
-        return st.markdown(f"""                         
-<nav class="navbar navbar-default navbar-fixed-top">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>                        
-      </button>
-      <a class="navbar-brand" href="#myPage"></a>
-    </div>
-    <div class="collapse navbar-collapse" id="myNavbar">
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="#project">Project</a></li>
-        <li><a href="#team">About Team</a></li>
-        <li><a href="#datasource">Data Source</a></li>
-        <li><a href="#coughdiagnosis">Cough Diagnosis</a></li>
-      </ul>
-    </div>
-  </div>
-</nav>
+        btn_back=st.button("Back to Home page")
+        if btn_back:
+          switch_page("app")
+        st.markdown(f"""                         
 <div class="jumbotron text-center">
   <h1>Identifying the Severity of Cough Due to Air Pollution in New Delhi using Audio Analysis and Machine Learning</h1> 
 </div>
-"""
-,unsafe_allow_html=True)
+""",unsafe_allow_html=True)
