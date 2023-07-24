@@ -7,11 +7,11 @@ PAGE_TITLE="Identifying the Severity of Cough Due to Air Pollution in New Delhi 
 
 st.set_page_config(page_title=PAGE_TITLE, page_icon="🧊",layout="wide",initial_sidebar_state="collapsed")
 load_css()
-load_menu_html(False)
+load_menu_html(True)
 load_home_page_content()
 
-st.markdown("# Diagonose the test",unsafe_allow_html=True)
-btn=st.button("Click to Diagnose!")
+st.markdown("""<style>[//*[@id="root"]/div[1]/div[1]/div/div/div/section[2]/div[1]/div[1]/div/div[5]]{margin-left: 50px;}</style>""", unsafe_allow_html=True)
+btn=st.button("Click to diagnose the severity of cough!")
 if btn:
     switch_page("Cough_Diagonsis")   
 
