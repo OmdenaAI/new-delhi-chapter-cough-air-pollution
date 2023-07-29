@@ -23,4 +23,5 @@ Note : Please Follow the below guidelines to create task folders
 |4|Model Development|Model_5 :- Model training to find out the best model for Cough Audio Detection using EC50 data|
 |4|Model Development|Model_6_data_prep :- Preparaing data from respiratory sound dataset for cough severity detection|
 |4|Model Development|Model_6 :- Model training to find out the best model for Cough Severity detection using Respiratory sound dataset|
+|4|Model Development|simple_models_coughvid :- Earlier Version of Model 1|
 |5|Political Rationale| The entire basis of the political rationale is to create a document upon which we could use as a basis to know if the direction of our current application is viable or not|
