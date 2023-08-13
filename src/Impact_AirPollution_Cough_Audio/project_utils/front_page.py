@@ -40,7 +40,7 @@ Secondly, the website can provide recommendations based on the severity of the c
          <tbody>
          <tr><td scope="row">Knowledge</td><td>Eishani Bhattacharya,  Anushka Singh,Param Barodia </td><td>Param Barodia, Eishani Bhattacharya, Neelakshi Joshi, Nick Kobets</td></tr>
           <tr><td scope="row">Data Collection</td><td>Debadrita Dey, Kaif Ashraf</td><td>-</td></tr>
-          <tr><td scope="row">Exploratory Data Analysis (EDA)</td><td>Neelakshi Joshi, Shubham Naik</td><td>Neelakshi Joshi</td></tr>
+          <tr><td scope="row">Exploratory Data Analysis (EDA)</td><td>Neelakshi Joshi, Shubham Naik</td><td>Neelakshi Joshi, Kartik Goel</td></tr>
           <tr><td scope="row">Data Preprocessing</td><td>Neelakshi Joshi, Shubham Naik, Sankalp Gilda </td><td>Neelakshi Joshi</td></tr>
           <tr><td scope="row">Model Development</td><td>Pankaj Tiwari, Zuhail, Shibendra Bhattacharjee</td><td>Shibendra Bhattacharjee, Dharvi</td></tr>
           <tr><td scope="row">Model Deployment API Creation</td><td>Arya Adesh, Vinod Cherian</td><td>Vinod Cherian, Souvik Roy</td></tr>
